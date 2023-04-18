@@ -10,44 +10,61 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            /*
-             * Todo follow all comments!! 
-             */
 
-            #region Vehicles
+            var vehicles = new List<Vehicle>();
 
-            /*
-             * Create an abstract class called Vehicle
-             * The vehicle class shall have three string properties Year, Make, and Model
-             * Set the defaults to something generic in the Vehicle class
-             * Vehicle shall have an abstract method called DriveAbstract with no implementation
-             * Vehicle shall have a virtual method called DriveVirtual with a base implementation.
-             */
+            Car myCar = new Car();
+            myCar.Year = 2010;
+            myCar.Make = "Jeep";
+            myCar.Model = "Liberty";
+            myCar.HasSideCar = false;
+            myCar.HasTrunk = true;
 
-            /* 
-             * Now create 2 non-abstract classes: Car and Motorcycle, that inherit from Vehicle
-             * Add a distict property in the 2 derived classes such as HasTrunk for Car and HasSideCart for Motorcycle
-             * Provide the implementations for the abstract methods
-             * Only in the Motorcycle class will you override the virtual drive method
-            */
+            vehicles.Add(myCar);
 
-            // Create a list of Vehicle called vehicles
+            Car car2 = new Car();
+            car2.Year = 2016;
+            car2.Make = "Jeep";
+            car2.Model = "Compass";
+            car2.HasTrunk = true;
+            car2.HasSideCar = false;
 
-            /*
-             * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
-             * 
-             * Set the properties with object initializer syntax
-             */
+            vehicles.Add(car2);
 
-            /*
-             * Add the 4 vehicles to the list
-             * Using a foreach loop iterate over each of the properties
-             */
+            Motorcycle myBike = new Motorcycle();
+            myBike.Make = "Harley Davidson";
+            myBike.Model = "Roadster XL 1200";
+            myBike.Year = 2017;
+            myBike.HasTrunk = false;
+            myBike.HasSideCar = false;
 
-            // Call each of the drive methods for one car and one motorcycle
+            vehicles.Add(myBike);
 
-            #endregion            
-            Console.ReadLine();
+            Vehicle truck = new Car();
+            truck.Year = 2020;
+            truck.Make = "Ford";
+            truck.Model = "F150";
+  
+            vehicles.Add(truck);
+
+            Vehicle sportsCar = new Car();
+            sportsCar.Year = 2019;
+            sportsCar.Make = "Ford";
+            sportsCar.Model = "Mustang";
+
+            vehicles.Add(sportsCar);
+
+            
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"{vehicle.Year} {vehicle.Make} {vehicle.Model}");
+                vehicle.DriveAbstract();
+                vehicle.DriveVirtual();
+            }
+         
+
+                     
+            
         }
     }
 }
